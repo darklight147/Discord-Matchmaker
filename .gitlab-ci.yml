@@ -1,0 +1,14 @@
+# This file is a template, and might need editing before it works on your project.
+docker-build-master:
+  # Official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u darklight147 -p 2468147aZ!! registry.gitlab.com
+  script:
+    - docker build --pull -t "registry.gitlab.com/darklight147/discord_valorant" .
+    - docker push "registry.gitlab.com/darklight147/discord_valorant"
+  only:
+    - master
